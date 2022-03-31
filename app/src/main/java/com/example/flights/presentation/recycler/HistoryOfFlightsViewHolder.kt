@@ -53,6 +53,7 @@ class HistoryOfFlightsViewHolder(
     private val remove by lazy {
         itemView.findViewById<ImageView>(R.id.remove)
     }
+
     fun bindItem(flight: Flight) {
         flight.apply {
             departureCityTextView.text = departureCity

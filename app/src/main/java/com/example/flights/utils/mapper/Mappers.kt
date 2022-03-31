@@ -3,15 +3,15 @@ package com.example.flights.utils.mapper
 import com.example.flights.data.room.entity.FlightEntity
 import com.example.flights.domain.models.Flight
 
-fun Int.toHours(): String{
-    return when{
+fun Int.toHours(): String {
+    return when {
         this < 1 -> this.toString() + "0"
         else -> this.toString()
     }
 }
 
-fun Int.toMinutes(): String{
-    return when{
+fun Int.toMinutes(): String {
+    return when {
         this < 10 -> "0$this"
         else -> this.toString()
     }
