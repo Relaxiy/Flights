@@ -30,10 +30,8 @@ class HistoryOfFlightsFragmentViewModel @Inject constructor(
         viewModelScope.launch {
             viewModelScope.launch {
                 flightsInteractor.deleteFlight(flight)
-            }.onJoin
-            viewModelScope.launch {
-                getFlights()
-            }
+            }.join()
+            getFlights()
         }
     }
 }
