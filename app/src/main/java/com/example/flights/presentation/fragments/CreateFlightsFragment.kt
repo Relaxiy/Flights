@@ -55,8 +55,8 @@ class CreateFlightsFragment : Fragment(R.layout.fragment_create_flights) {
             createFlightsFragmentViewModel.saveFlight(
                 bindDepartureCity.text.toString(),
                 bindArrivalCity.text.toString(),
-                bindDepartureDate.text.toString() + bindDepartureTime.text.toString(),
-                bindArrivalDate.text.toString() + bindArrivalTime.text.toString(),
+                bindDepartureDate.text.toString() + " " + bindDepartureTime.text.toString(),
+                bindArrivalDate.text.toString() + " " + bindArrivalTime.text.toString(),
                 bindPassportNumber.text.toString(),
                 bindPassengerName.text.toString(),
                 bindAgeCategory()
