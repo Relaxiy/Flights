@@ -72,7 +72,7 @@ class CreateFlightsFragment : Fragment(R.layout.fragment_create_flights) {
                         R.id.container
                     )
                 }
-                is ShowSnackBar -> showSnackBar("Wrong")
+                is ShowSnackBar -> showSnackBar(getString(R.string.wrong))
             }
         }
     }
@@ -80,7 +80,7 @@ class CreateFlightsFragment : Fragment(R.layout.fragment_create_flights) {
     private fun initDatePicker(editText: EditText) {
         val datePicker =
             MaterialDatePicker.Builder.datePicker()
-                .setTitleText("Select date")
+                .setTitleText(getString(R.string.select_date))
                 .build()
         editText.setOnClickListener {
             datePicker.show(childFragmentManager, "TAG")
@@ -93,7 +93,7 @@ class CreateFlightsFragment : Fragment(R.layout.fragment_create_flights) {
     private fun initTimePicker(editText: EditText) {
         val timePicker = MaterialTimePicker.Builder().setTimeFormat(CLOCK_12H).build()
         editText.setOnClickListener {
-            timePicker.show(requireActivity().supportFragmentManager, "TAG")
+            timePicker.show(childFragmentManager, "TAG")
         }
         timePicker.addOnPositiveButtonClickListener {
             editText.setText(timePicker.hour.toHours() + ":" + timePicker.minute.toMinutes())

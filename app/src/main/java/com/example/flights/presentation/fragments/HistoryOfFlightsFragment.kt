@@ -39,7 +39,7 @@ class HistoryOfFlightsFragment : Fragment(R.layout.fragment_history_of_flights) 
     private val deleteClickListener by lazy {
         object : DeleteClickListener {
             override fun deleteItem(flight: Flight) {
-                requireActivity().dialog("Are you sure? This action cannot be undone.") {
+                requireActivity().dialog(getString(R.string.dialog_message)) {
                     historyOfFlightsFragmentViewModel.deleteFlight(flight)
                 }
             }

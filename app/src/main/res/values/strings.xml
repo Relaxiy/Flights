@@ -15,4 +15,7 @@
     <string name="passport">Passport:</string>
     <string name="category">Category:</string>
     <string name="adult_child">Adult / Child</string>
+    <string name="dialog_message">Are you sure? This action cannot be undone.</string>
+    <string name="wrong">Wrong</string>
+    <string name="select_date">Select date</string>
 </resources>
