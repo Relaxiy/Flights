@@ -7,6 +7,7 @@ import com.example.flights.FlightsApplication
 import com.example.flights.di.AppComponent
 import com.example.flights.domain.models.Flight
 import com.example.flights.presentation.dialog.MessageDialog
+import com.google.android.material.snackbar.Snackbar
 import kotlin.concurrent.thread
 
 fun FragmentActivity.openFragment(tag: String, fragment: Fragment, id: Int) {
@@ -23,6 +24,10 @@ val Context.appComponent: AppComponent
         else -> this.applicationContext.appComponent
     }
 
+fun Fragment.showSnackBar(message: String) {
+    Snackbar.make(requireView(), message, Snackbar.LENGTH_LONG).show()
+}
+
 fun FragmentActivity.dialog(message: String, deleteFlight: () -> Unit) {
     val myDialogFragment = MessageDialog(message) {
         deleteFlight()
@@ -37,8 +42,8 @@ fun String.isPassportNumber(): Boolean {
         val numbers = this.substring(2)
         var counter1 = 0
         var counter2 = 0
-        for (it in letters){
-            if(it.digitToIntOrNull() != null){
+        for (it in letters) {
+            if (it.digitToIntOrNull() != null) {
                 counter1++
             }
         }

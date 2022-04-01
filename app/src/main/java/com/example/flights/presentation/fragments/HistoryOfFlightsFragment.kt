@@ -48,10 +48,10 @@ class HistoryOfFlightsFragment : Fragment(R.layout.fragment_history_of_flights) 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        observer()
+        initObserver()
     }
 
-    private fun observer() {
+    private fun initObserver() {
         recycler?.adapter = adapter
         historyOfFlightsFragmentViewModel.flights.observe(viewLifecycleOwner) { flights ->
             adapter.setItems(flights)

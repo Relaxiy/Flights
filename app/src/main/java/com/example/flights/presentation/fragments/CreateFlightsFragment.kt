@@ -13,6 +13,7 @@ import com.example.flights.utils.ext.appComponent
 import com.example.flights.utils.ext.openFragment
 import com.example.flights.utils.actionSelector.ActionSelector.OpenFragment
 import com.example.flights.utils.actionSelector.ActionSelector.ShowSnackBar
+import com.example.flights.utils.ext.showSnackBar
 import com.example.flights.utils.mapper.toHours
 import com.example.flights.utils.mapper.toMinutes
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -55,7 +56,7 @@ class CreateFlightsFragment : Fragment(R.layout.fragment_create_flights) {
             createFlightsFragmentViewModel.saveFlight(
                 bindDepartureCity.text.toString(),
                 bindArrivalCity.text.toString(),
-                bindDepartureDate.text.toString() + " " + bindDepartureTime.text.toString(),
+                "${bindDepartureDate.text} ${bindDepartureTime.text}",
                 bindArrivalDate.text.toString() + " " + bindArrivalTime.text.toString(),
                 bindPassportNumber.text.toString(),
                 bindPassengerName.text.toString(),
@@ -71,11 +72,7 @@ class CreateFlightsFragment : Fragment(R.layout.fragment_create_flights) {
                         R.id.container
                     )
                 }
-                is ShowSnackBar -> Snackbar.make(
-                    requireView(),
-                    "Wrong input!",
-                    Snackbar.LENGTH_LONG
-                ).show()
+                is ShowSnackBar -> showSnackBar("Wrong")
             }
         }
     }
@@ -86,7 +83,7 @@ class CreateFlightsFragment : Fragment(R.layout.fragment_create_flights) {
                 .setTitleText("Select date")
                 .build()
         editText.setOnClickListener {
-            datePicker.show(requireActivity().supportFragmentManager, "TAG")
+            datePicker.show(childFragmentManager, "TAG")
         }
         datePicker.addOnPositiveButtonClickListener {
             editText.setText(datePicker.headerText)

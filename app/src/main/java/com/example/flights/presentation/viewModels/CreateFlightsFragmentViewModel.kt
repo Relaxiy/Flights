@@ -30,7 +30,7 @@ class CreateFlightsFragmentViewModel @Inject constructor(
         ageCategory: AgeCategory
     ) {
         viewModelScope.launch {
-            if (validation(
+            _submit.value =  if (validate(
                     departureCity,
                     arrivalCity,
                     departureTime,
@@ -50,14 +50,14 @@ class CreateFlightsFragmentViewModel @Inject constructor(
                         ageCategory
                     )
                 )
-                _submit.value = OpenFragment
+                OpenFragment
             } else {
-                _submit.value = ShowSnackBar
+                ShowSnackBar
             }
         }
     }
 
-    private fun validation(
+    private fun validate(
         departureCity: String,
         arrivalCity: String,
         departureTime: String,
