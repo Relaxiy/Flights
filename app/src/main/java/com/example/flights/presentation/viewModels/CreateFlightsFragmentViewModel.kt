@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.flights.domain.interactor.FlightsInteractor
+import com.example.flights.domain.models.Flight
 import com.example.flights.domain.models.enums.AgeCategory
 import com.example.flights.utils.actionSelector.ActionSelector
 import com.example.flights.utils.actionSelector.ActionSelector.OpenFragment
@@ -29,26 +30,19 @@ class CreateFlightsFragmentViewModel @Inject constructor(
         passengerName: String,
         ageCategory: AgeCategory
     ) {
+        val flight = createFlightObject(
+            departureCity,
+            arrivalCity,
+            departureTime,
+            arrivalTime,
+            passportNumber,
+            passengerName,
+            ageCategory
+        )
         viewModelScope.launch {
-            _submit.value =  if (validate(
-                    departureCity,
-                    arrivalCity,
-                    departureTime,
-                    arrivalTime,
-                    passportNumber,
-                    passengerName
-                )
-            ) {
+            _submit.value = if (validate(flight)) {
                 flightsInteractor.saveFlight(
-                    flight = flightsInteractor.createFlightObject(
-                        departureCity,
-                        arrivalCity,
-                        departureTime,
-                        arrivalTime,
-                        passportNumber,
-                        passengerName,
-                        ageCategory
-                    )
+                    flight = flight
                 )
                 OpenFragment
             } else {
@@ -57,20 +51,35 @@ class CreateFlightsFragmentViewModel @Inject constructor(
         }
     }
 
-    private fun validate(
+    private fun createFlightObject(
         departureCity: String,
         arrivalCity: String,
         departureTime: String,
         arrivalTime: String,
         passportNumber: String,
         passengerName: String,
+        ageCategory: AgeCategory
+    ): Flight {
+        return Flight(
+            departureCity,
+            arrivalCity,
+            departureTime,
+            arrivalTime,
+            passportNumber,
+            passengerName,
+            ageCategory
+        )
+    }
+
+    private fun validate(
+        flight: Flight
     ): Boolean {
-        return !(departureCity.isEmpty() ||
-                arrivalCity.isEmpty() ||
-                departureTime.isEmpty() ||
-                arrivalTime.isEmpty() ||
-                passportNumber.isEmpty() ||
-                passengerName.isEmpty() ||
-                !passportNumber.isPassportNumber())
+        return !(flight.departureCity.isEmpty() ||
+                flight.arrivalCity.isEmpty() ||
+                flight.departureTime.isEmpty() ||
+                flight.arrivalTime.isEmpty() ||
+                flight.passportNumber.isEmpty() ||
+                flight.passengerName.isEmpty() ||
+                !flight.passportNumber.isPassportNumber())
     }
 }

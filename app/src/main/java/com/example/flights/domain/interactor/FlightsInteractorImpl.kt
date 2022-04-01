@@ -20,24 +20,4 @@ class FlightsInteractorImpl @Inject constructor(
     override suspend fun deleteFlight(flight: Flight) {
         flightsRepository.deleteFlight(flight)
     }
-
-    override fun createFlightObject(
-        departureCity: String,
-        arrivalCity: String,
-        departureTime: String,
-        arrivalTime: String,
-        passportNumber: String,
-        passengerName: String,
-        ageCategory: AgeCategory
-    ): Flight {
-        return Flight(
-            departureCity,
-            arrivalCity,
-            departureTime,
-            arrivalTime,
-            passportNumber,
-            passengerName,
-            ageCategory
-        )
-    }
 }

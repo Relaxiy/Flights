@@ -11,13 +11,4 @@ interface FlightsInteractor {
 
     suspend fun deleteFlight(flight: Flight)
 
-    fun createFlightObject(
-        departureCity: String,
-        arrivalCity: String,
-        departureTime: String,
-        arrivalTime: String,
-        passportNumber: String,
-        passengerName: String,
-        ageCategory: AgeCategory
-    ): Flight
 }
