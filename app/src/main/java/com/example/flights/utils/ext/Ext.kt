@@ -37,24 +37,5 @@ fun FragmentActivity.dialog(message: String, deleteFlight: () -> Unit) {
 }
 
 fun String.isPassportNumber(): Boolean {
-    return if (this.length == 7) {
-        val letters = this.substring(0, 2)
-        val numbers = this.substring(2)
-        var counter1 = 0
-        var counter2 = 0
-        for (it in letters) {
-            if (it.digitToIntOrNull() != null) {
-                counter1++
-            }
-        }
-        for (it in numbers) {
-            if (it.digitToIntOrNull() == null) {
-                counter2++
-            }
-        }
-
-        letters.uppercase() == letters && counter1 == 0 && counter2 == 0
-    } else {
-        false
-    }
+    return Regex("[A-Z]{2}[0-9]{5}").matches(this)
 }
