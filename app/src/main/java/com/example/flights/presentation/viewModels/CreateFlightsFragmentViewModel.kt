@@ -11,6 +11,7 @@ import com.example.flights.utils.actionSelector.ActionSelector
 import com.example.flights.utils.actionSelector.ActionSelector.OpenFragment
 import com.example.flights.utils.actionSelector.ActionSelector.ShowSnackBar
 import com.example.flights.utils.ext.isPassportNumber
+import kotlinx.android.synthetic.main.fragment_create_flights.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -48,6 +49,14 @@ class CreateFlightsFragmentViewModel @Inject constructor(
             } else {
                 ShowSnackBar
             }
+        }
+    }
+
+    fun bindAgeCategory(isChecked: Boolean): AgeCategory {
+        return if (isChecked) {
+            AgeCategory.CHILD
+        } else {
+            AgeCategory.ADULT
         }
     }
 

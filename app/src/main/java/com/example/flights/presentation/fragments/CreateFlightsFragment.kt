@@ -43,16 +43,10 @@ class CreateFlightsFragment : Fragment(R.layout.fragment_create_flights) {
         initObserver()
     }
 
-    private fun bindAgeCategory(): AgeCategory {
-        return if (viewSwitcher.isChecked) {
-            AgeCategory.CHILD
-        } else {
-            AgeCategory.ADULT
-        }
-    }
 
     private fun initObserver() {
         createFlight.setOnClickListener {
+            val ageCategory = createFlightsFragmentViewModel.bindAgeCategory(viewSwitcher.isChecked)
             createFlightsFragmentViewModel.saveFlight(
                 bindDepartureCity.text.toString(),
                 bindArrivalCity.text.toString(),
@@ -60,7 +54,7 @@ class CreateFlightsFragment : Fragment(R.layout.fragment_create_flights) {
                 bindArrivalDate.text.toString() + " " + bindArrivalTime.text.toString(),
                 bindPassportNumber.text.toString(),
                 bindPassengerName.text.toString(),
-                bindAgeCategory()
+                ageCategory
             )
         }
         createFlightsFragmentViewModel.submit.observe(viewLifecycleOwner) { actionSelector ->
