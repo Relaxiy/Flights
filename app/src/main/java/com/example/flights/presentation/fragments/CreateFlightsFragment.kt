@@ -51,7 +51,7 @@ class CreateFlightsFragment : Fragment(R.layout.fragment_create_flights) {
                 bindDepartureCity.text.toString(),
                 bindArrivalCity.text.toString(),
                 "${bindDepartureDate.text} ${bindDepartureTime.text}",
-                bindArrivalDate.text.toString() + " " + bindArrivalTime.text.toString(),
+                "${bindArrivalDate.text} ${bindArrivalTime.text}",
                 bindPassportNumber.text.toString(),
                 bindPassengerName.text.toString(),
                 ageCategory
@@ -87,7 +87,7 @@ class CreateFlightsFragment : Fragment(R.layout.fragment_create_flights) {
     private fun initTimePicker(editText: EditText) {
         val timePicker = MaterialTimePicker.Builder().setTimeFormat(CLOCK_12H).build()
         editText.setOnClickListener {
-            timePicker.show(childFragmentManager, "TAG")
+            timePicker.show(childFragmentManager, getString(R.string.tag))
         }
         timePicker.addOnPositiveButtonClickListener {
             editText.setText(timePicker.hour.toHours() + ":" + timePicker.minute.toMinutes())
