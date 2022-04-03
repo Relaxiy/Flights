@@ -41,7 +41,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/shared_text_size"
                         tools:text="Departure city" />
 
                     <TextView
@@ -49,14 +49,14 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:text="@string/arrow"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/shared_text_size" />
 
                     <TextView
                         android:id="@+id/arrival_city"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/shared_text_size"
                         tools:text="Arrival city" />
                 </LinearLayout>
 
@@ -71,7 +71,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/shared_text_size"
                         tools:text="Departure time" />
 
                     <TextView
@@ -79,14 +79,14 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:text="@string/arrow"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/shared_text_size" />
 
                     <TextView
                         android:id="@+id/arrival_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/shared_text_size"
                         tools:text="Arrival time" />
                 </LinearLayout>
 
@@ -101,14 +101,14 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:text="@string/passport"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/shared_text_size" />
 
                     <TextView
                         android:id="@+id/passport_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/shared_text_size"
                         tools:text="Passport number" />
                 </LinearLayout>
 
@@ -123,14 +123,14 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:text="@string/passenger"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/shared_text_size" />
 
                     <TextView
                         android:id="@+id/passenger_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/shared_text_size"
                         tools:text="Passenger name" />
                 </LinearLayout>
 
@@ -145,14 +145,14 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:text="@string/category"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/shared_text_size" />
 
                     <TextView
                         android:id="@+id/age_category"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/shared_text_size"
                         tools:text="Age category" />
                 </LinearLayout>
 
