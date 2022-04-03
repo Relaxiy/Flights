@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
+import com.example.flights.R
 import com.example.flights.domain.models.Flight
 
 class MessageDialog(
@@ -13,15 +14,15 @@ class MessageDialog(
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(requireContext())
-            builder.setTitle("Warning!")
+            builder.setTitle(getString(R.string.warning))
                 .setMessage(message)
-                .setPositiveButton("Delete") { dialog, _ ->
+                .setPositiveButton(getString(R.string.delete)) { dialog, _ ->
                     deleteFlight()
                     dialog.cancel()
-                }.setNegativeButton("Cancel") { dialog, _ ->
+                }.setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
                     dialog.cancel()
                 }
             builder.create()
-        } ?: throw IllegalStateException("Activity cannot be null")
+        } ?: throw IllegalStateException(getString(R.string.null_activity))
     }
 }

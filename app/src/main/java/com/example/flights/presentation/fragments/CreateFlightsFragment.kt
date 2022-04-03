@@ -83,7 +83,7 @@ class CreateFlightsFragment : Fragment(R.layout.fragment_create_flights) {
                 .setTitleText(getString(R.string.select_date))
                 .build()
         editText.setOnClickListener {
-            datePicker.show(childFragmentManager, "TAG")
+            datePicker.show(childFragmentManager, getString(R.string.tag))
         }
         datePicker.addOnPositiveButtonClickListener {
             editText.setText(datePicker.headerText)
