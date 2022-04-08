@@ -1,23 +1,24 @@
 package com.example.flights.presentation.fragments
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.flights.R
+import com.example.flights.databinding.FragmentHistoryOfFlightsBinding
 import com.example.flights.domain.models.Flight
 import com.example.flights.presentation.recycler.HistoryOfFlightsAdapter
+import com.example.flights.presentation.recycler.callback.SwipeToDeleteCallback
 import com.example.flights.presentation.recycler.clickListener.DeleteClickListener
-import com.example.flights.presentation.viewModels.CreateFlightsFragmentViewModel
 import com.example.flights.presentation.viewModels.HistoryOfFlightsFragmentViewModel
-import com.example.flights.utils.actionSelector.ActionSelector
 import com.example.flights.utils.ext.appComponent
 import com.example.flights.utils.ext.dialog
-import kotlinx.android.synthetic.main.fragment_history_of_flights.*
 
 class HistoryOfFlightsFragment : Fragment(R.layout.fragment_history_of_flights) {
+
 
     companion object {
         const val TAG = "HistoryOfFlightsFragment"
@@ -33,15 +34,16 @@ class HistoryOfFlightsFragment : Fragment(R.layout.fragment_history_of_flights) 
     }
 
     private val adapter by lazy {
-        HistoryOfFlightsAdapter(deleteClickListener)
+        HistoryOfFlightsAdapter()
     }
 
-    private val deleteClickListener by lazy {
-        object : DeleteClickListener {
-            override fun deleteItem(flight: Flight) {
-                requireActivity().dialog(getString(R.string.dialog_message)) {
-                    historyOfFlightsFragmentViewModel.deleteFlight(flight)
-                }
+
+    private val swipeToDeleteCallback by lazy {
+        object : SwipeToDeleteCallback() {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.bindingAdapterPosition
+                recycler?.adapter?.notifyItemRemoved(position)
+                historyOfFlightsFragmentViewModel.deleteFlight(position)
             }
         }
     }
@@ -53,6 +55,8 @@ class HistoryOfFlightsFragment : Fragment(R.layout.fragment_history_of_flights) 
 
     private fun initObserver() {
         recycler?.adapter = adapter
+        val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(recycler)
         historyOfFlightsFragmentViewModel.flights.observe(viewLifecycleOwner) { flights ->
             adapter.setItems(flights)
         }

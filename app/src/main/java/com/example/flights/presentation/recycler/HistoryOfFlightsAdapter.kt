@@ -6,14 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.flights.domain.models.Flight
 import com.example.flights.presentation.recycler.clickListener.DeleteClickListener
 
-class HistoryOfFlightsAdapter(
-    private val deleteClickListener: DeleteClickListener
-) : RecyclerView.Adapter<HistoryOfFlightsViewHolder>() {
+class HistoryOfFlightsAdapter() : RecyclerView.Adapter<HistoryOfFlightsViewHolder>() {
 
     private var items = listOf<Flight>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryOfFlightsViewHolder {
-        return HistoryOfFlightsViewHolder.newInstance(parent, deleteClickListener)
+        return HistoryOfFlightsViewHolder.newInstance(parent)
     }
 
     override fun onBindViewHolder(holder: HistoryOfFlightsViewHolder, position: Int) {

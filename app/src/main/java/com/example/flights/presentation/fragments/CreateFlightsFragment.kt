@@ -6,7 +6,9 @@ import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.flights.R
+import com.example.flights.databinding.FragmentCreateFlightsBinding
 import com.example.flights.domain.models.enums.AgeCategory
 import com.example.flights.presentation.viewModels.CreateFlightsFragmentViewModel
 import com.example.flights.utils.ext.appComponent
@@ -25,6 +27,8 @@ import kotlinx.android.synthetic.main.fragment_create_flights.view.*
 
 class CreateFlightsFragment : Fragment(R.layout.fragment_create_flights) {
 
+    private val binding: FragmentCreateFlightsBinding by viewBinding()
+
     private val createFlightsFragmentViewModel by viewModels<CreateFlightsFragmentViewModel> {
         requireActivity().appComponent.viewModelsFactory()
     }
@@ -36,24 +40,24 @@ class CreateFlightsFragment : Fragment(R.layout.fragment_create_flights) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initDatePicker(bindDepartureDate)
-        initDatePicker(bindArrivalDate)
-        initTimePicker(bindDepartureTime)
-        initTimePicker(bindArrivalTime)
+        initDatePicker(binding.bindDepartureDate)
+        initDatePicker(binding.bindArrivalDate)
+        initTimePicker(binding.bindDepartureTime)
+        initTimePicker(binding.bindArrivalTime)
         initObserver()
     }
 
 
     private fun initObserver() {
         createFlight.setOnClickListener {
-            val ageCategory = createFlightsFragmentViewModel.bindAgeCategory(viewSwitcher.isChecked)
+            val ageCategory = createFlightsFragmentViewModel.bindAgeCategory(binding.viewSwitcher.isChecked)
             createFlightsFragmentViewModel.saveFlight(
-                bindDepartureCity.text.toString(),
-                bindArrivalCity.text.toString(),
-                "${bindDepartureDate.text} ${bindDepartureTime.text}",
-                "${bindArrivalDate.text} ${bindArrivalTime.text}",
-                bindPassportNumber.text.toString(),
-                bindPassengerName.text.toString(),
+                binding.bindDepartureCity.text.toString(),
+                binding.bindArrivalCity.text.toString(),
+                "${binding.bindDepartureDate.text} ${binding.bindDepartureTime.text}",
+                "${binding.bindArrivalDate.text} ${binding.bindArrivalTime.text}",
+                binding.bindPassportNumber.text.toString(),
+                binding.bindPassengerName.text.toString(),
                 ageCategory
             )
         }

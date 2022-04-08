@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.flights.domain.interactor.FlightsInteractor
 import com.example.flights.domain.models.Flight
 import kotlinx.coroutines.launch
+import java.text.FieldPosition
 import javax.inject.Inject
 
 class HistoryOfFlightsFragmentViewModel @Inject constructor(
@@ -26,12 +27,13 @@ class HistoryOfFlightsFragmentViewModel @Inject constructor(
         }
     }
 
-    fun deleteFlight(flight: Flight) {
+    fun deleteFlight(position: Int) {
         viewModelScope.launch {
             viewModelScope.launch {
-                flightsInteractor.deleteFlight(flight)
-            }.join()
-            getFlights()
+                flightsInteractor.deleteFlight(flights.value!![position])
+            }.invokeOnCompletion {
+                getFlights()
+            }
         }
     }
 }

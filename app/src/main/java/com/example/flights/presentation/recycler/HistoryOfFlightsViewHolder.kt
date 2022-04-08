@@ -13,18 +13,16 @@ import com.example.flights.presentation.recycler.clickListener.DeleteClickListen
 
 class HistoryOfFlightsViewHolder(
     itemView: View,
-    private val deleteClickListener: DeleteClickListener
 ) : RecyclerView.ViewHolder(itemView) {
     companion object {
-        fun newInstance(parent: ViewGroup, deleteClickListener: DeleteClickListener) =
+        fun newInstance(parent: ViewGroup) =
             HistoryOfFlightsViewHolder(
                 LayoutInflater.from(parent.context)
                     .inflate(
                         R.layout.flight_item,
                         parent,
                         false
-                    ),
-                deleteClickListener
+                    )
             )
     }
 
@@ -63,9 +61,6 @@ class HistoryOfFlightsViewHolder(
             passportNumberTextView.text = passportNumber
             passengerNameTextView.text = passengerName
             ageCategoryTextView.text = ageCategory.category
-        }
-        remove.setOnClickListener {
-            deleteClickListener.deleteItem(flight)
         }
     }
 }
