@@ -12,10 +12,8 @@ import com.example.flights.databinding.FragmentHistoryOfFlightsBinding
 import com.example.flights.domain.models.Flight
 import com.example.flights.presentation.recycler.HistoryOfFlightsAdapter
 import com.example.flights.presentation.recycler.callback.SwipeToDeleteCallback
-import com.example.flights.presentation.recycler.clickListener.DeleteClickListener
 import com.example.flights.presentation.viewModels.HistoryOfFlightsFragmentViewModel
 import com.example.flights.utils.ext.appComponent
-import com.example.flights.utils.ext.dialog
 
 class HistoryOfFlightsFragment : Fragment(R.layout.fragment_history_of_flights) {
 
