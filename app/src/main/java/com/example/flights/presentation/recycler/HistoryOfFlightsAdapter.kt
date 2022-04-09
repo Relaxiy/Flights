@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flights.domain.models.Flight
-import com.example.flights.presentation.recycler.clickListener.DeleteClickListener
 
 class HistoryOfFlightsAdapter() : RecyclerView.Adapter<HistoryOfFlightsViewHolder>() {
 

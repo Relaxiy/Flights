@@ -1,7 +1,6 @@
 package com.example.flights.presentation.recycler
 
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -9,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flights.R
 import com.example.flights.domain.models.Flight
-import com.example.flights.presentation.recycler.clickListener.DeleteClickListener
 
 class HistoryOfFlightsViewHolder(
     itemView: View,
